@@ -1,0 +1,23 @@
+public class FourierSpikes {
+    public static void main(String[] args) {
+        int n = Integer.parseInt(args[0]);
+        int samples = 500;
+        double[] t = new double[samples];
+        double[] y = new double[samples];
+        
+        double min = -10.0;
+        double max = 10.0;
+
+        for (int i = 0; i < samples; i++) {
+            t[i] = min + i * (max - min) / (samples - 1);
+            double sum = 0.0;
+            for (int k = 1; k <= n; k++) {
+                sum += Math.cos(k * t[i]);
+            }
+            y[i] = sum / n;
+            System.out.println(t[i] + " " + y[i]); // Output for plotting elsewhere
+        }
+
+        // Optional: plot using StdDraw
+    }
+}
